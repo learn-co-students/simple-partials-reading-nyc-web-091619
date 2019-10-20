@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @author = @post.author
   end
 
   def new
@@ -14,8 +15,8 @@ class PostsController < ApplicationController
   def create
     @author = Author.first
     @post = Post.new
-    @post.title = params[:title]
-    @post.description = params[:description]
+    @post.title = params[:post][:title]
+    @post.description = params[:post][:description]
     @post.author_id = @author.id
     @post.save
     redirect_to post_path(@post)
@@ -27,7 +28,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update(title: params[:title], description: params[:description])
+    @post.update(title: params[:post][:title], description: params[:post][:description])
     redirect_to post_path(@post)
   end
   

@@ -29,7 +29,7 @@ describe 'form' do
     @post = Post.create(title: "My Post", description: "My post desc", author_id: @author.id)
 
   end
-  it 'shows a new form that submits content and redirects and prints out params' do
+  xit 'shows a new form that submits content and redirects and prints out params' do
     visit new_post_path
 
     fill_in 'title', with: "My post title"
@@ -40,7 +40,7 @@ describe 'form' do
     expect(page).to have_content("My post title")
   end
 
-  it 'shows a new form that submits content and redirects and prints out params' do
+  xit 'shows a new form that submits content and redirects and prints out params' do
 
     visit edit_post_path(@post)
 
